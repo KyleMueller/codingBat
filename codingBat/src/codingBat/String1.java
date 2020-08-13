@@ -184,4 +184,90 @@ public class String1 {
 		  }
 		  return str;
 		}
+	public String deFront(String str) {    
+		  if(str.length() == 0){
+		    return "";
+		  }
+		  if(str.length() == 1){
+		    if(str.charAt(0) == 'a'){
+		      return "a";
+		    }
+		    return "";
+		  }
+		  String ret = "";
+		  if(str.charAt(0) == 'a'){
+		    ret = ret + "a";
+		  }
+		  if(str.charAt(1) == 'b'){
+		    ret = ret + "b";
+		  }
+		  ret = ret + str.substring(2);
+		  return ret;
+		}
+	public String startWord(String str, String word) {
+		  if(str.length() < 1){
+		    return "";
+		  }
+		  if(str.length() < word.length()){
+		    return "";
+		  }
+		  if(str.substring(0,word.length()).equals(word)){
+		    return word;
+		  }
+		  if(word.length() == 1){
+		    return str.charAt(0) + "";
+		  }
+		  if(str.substring(1,word.length()).equals(word.substring(1))){
+		    return str.substring(0,word.length());
+		  }
+		  return "";
+		}
+	public String withoutX(String str) {
+		  if(str.length() == 0){
+		    return "";
+		  }
+		  if(str.length() == 1){
+		    if(str.charAt(0) == 'x'){
+		      return "";
+		    }
+		    return str;
+		  }
+		  if(str.length() == 2){
+		    if(str.charAt(0) == 'x'){
+		      if(str.charAt(1) == 'x'){
+		        return "";
+		      }
+		      return str.charAt(1) + "";
+		    }
+		    if(str.charAt(1) == 'x'){
+		      return str.charAt(0) + "";
+		    }
+		  }
+		  if(str.charAt(0) == 'x'){
+		    str = str.substring(1);
+		  }
+		  if(str.charAt(str.length()-1) == 'x'){
+		    str = str.substring(0,str.length()-1);
+		  }
+		  return str;
+		}
+	public String withoutX2(String str) {
+		  String prev = "";
+		  if(str.length() == 0){
+		    return "";
+		  }
+		  for(int i = 0; i < 2; i++){
+		    if(2 > str.length()){
+		      if(str.charAt(0) == 'x'){
+		        str = "";
+		      }
+		      break;
+		    }
+		    if(str.charAt(0) != 'x'){
+		      prev = prev + str.charAt(0);
+		    }
+		    str = str.substring(1);
+		  }
+		  return prev + str;
+		}
 }
