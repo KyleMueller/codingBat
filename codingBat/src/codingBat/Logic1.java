@@ -236,5 +236,80 @@ public class Logic1 {
 		    }
 		    return false;
 		}
+	public int withoutDoubles(int die1, int die2, boolean noDoubles) {
+		  if(noDoubles){
+		    if(die1 == die2){
+		      if(die1 + die2 == 12){
+		        return 7;
+		      }
+		      return die1 + die2 + 1;
+		    }
+		  }
+		  return die1 + die2;
+		}
+	public int maxMod5(int a, int b) {
+		  if(a == b){
+		    return 0;
+		  }
+		  if(a % 5 == b % 5){
+		    if(a > b){
+		      return b;
+		    }
+		    return a;
+		  }
+		  if(a > b){
+		    return a;
+		  }
+		  return b;
+		}
+	public int redTicket(int a, int b, int c) {
+		  if(a + b + c == 6){
+		    return 10;
+		  }
+		  if(a == b && b == c){
+		    return 5;
+		  }
+		  if(a != b && a != c){
+		    return 1;
+		  }
+		  return 0;
+		}
+	public int greenTicket(int a, int b, int c) {
+		  if(a == b && b == c){
+		    return 20;
+		  }
+		  if(a == b || a == c || b == c){
+		    return 10;
+		  }
+		  return 0;
+		}
+	public int blueTicket(int a, int b, int c) {
+		  int ab = a + b;
+		  int bc = b + c;
+		  int ac = a + c;
+		  if(ab == 10 || bc == 10 || ac == 10){
+		    return 10;
+		  }
+		  if(ab - 10 >= ac || ab - 10 >= bc){
+		    return 5;
+		  }
+		  return 0;
+		}
+	public boolean shareDigit(int a, int b) {
+		  if(a%10 == b%10 || a%10 == b/10){
+		    return true;
+		  }
+		  if(a/10 == b%10 || a/10 == b/10){
+		    return true;
+		  }
+		  return false;
+		}
+	public int sumLimit(int a, int b) {
+		  int len = (a + "").length();
+		  if(((a+b) + "").length() == len){
+		    return a+b;
+		  }
+		  return a;
+		}
 
 }
