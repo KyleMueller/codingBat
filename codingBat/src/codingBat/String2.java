@@ -164,5 +164,111 @@ public class String2 {
 		  }
 		  return false;
 		}
-
+	public String getSandwich(String str) {
+		  int count = 0;
+		  int frBreEnd = 0;
+		  int scBreSt = 0;
+		  for(int i = 0; i < str.length() - 4; i++){
+		    if(str.substring(i,i+5).equals("bread")){
+		      count++;
+		      if(count == 1){
+		        frBreEnd = i+5;
+		      } else if(count >= 2){
+		        scBreSt = i;
+		      }
+		    }
+		  }
+		  if(count < 2){
+		    return "";
+		  }
+		  return str.substring(frBreEnd,scBreSt);
+		}
+	public boolean sameStarChar(String str) {
+		  for(int i = 1; i < str.length() - 1; i++){
+		    if(str.charAt(i) == '*'){
+		      if(str.charAt(i-1) != str.charAt(i+1)){
+		        return false;
+		      }
+		    }
+		  }
+		  return true;
+		}
+	public String oneTwo(String str) {
+		  String ret = "";
+		  for(int i = 2; i < str.length(); i = i + 3){
+		    ret = ret + str.charAt(i-1) + str.charAt(i) + str.charAt(i - 2);
+		  }
+		  return ret;
+		}
+	public String zipZap(String str) {
+		  String ret = "";
+		  for(int i = 0; i < str.length(); i++){
+		    ret = ret + str.charAt(i);
+		    if(i  < str.length() - 2){
+		      if(str.charAt(i) == 'z' && str.charAt(i+2) == 'p'){
+		        i++;
+		      }
+		    }
+		  }
+		  return ret;
+		}
+	public String starOut(String str) {
+		  String ret = "";
+		  for(int i = 0; i < str.length(); i++){
+		    if(i == str.length() - 1 && i > 0){
+		      if(str.charAt(i) != '*' && str.charAt(i-1) != '*'){
+		        ret = ret + str.charAt(i);
+		        continue;
+		      }
+		    }
+		    if(str.charAt(i) == '*'){
+		      continue;
+		    }
+		    if(i == 0 && str.length() == 1 && str.charAt(i) != '*'){
+		      return str;
+		    }
+		    if(i == 0 && str.charAt(i) != '*' && str.charAt(i + 1) != '*'){
+		      ret = ret + str.charAt(i);
+		      continue;
+		    }
+		    if(i != 0 && i != str.length() - 1 && str.charAt(i) != '*' && 
+		      str.charAt(i-1) != '*' 
+		      && str.charAt(i+1) != '*'){
+		      ret= ret + str.charAt(i);
+		    }
+		  }
+		  return ret;
+		}
+	public String plusOut(String str, String word) {
+		  String ret = "";
+		  for(int i = 0; i < str.length(); i++){
+		    if(str.substring(i).length() < word.length()){
+		      ret = ret + '+';
+		    }
+		    else if(str.substring(i, i + word.length()).equals(word)){
+		      ret = ret + word;
+		      i = i + word.length() - 1;
+		    } else{
+		      ret = ret + "+";
+		    }
+		  }
+		  return ret;
+		}
+	public String wordEnds(String str, String word) {
+		  String ret = "";
+		  for(int i = 0; i < str.length(); i++){
+		    if(str.substring(i).length() < word.length()){
+		      break;
+		    }
+		    if(str.substring(i,i + word.length()).equals(word)){
+		      if(i-1 >= 0){
+		        ret = ret + str.charAt(i-1);
+		      }
+		      if(i + word.length() < str.length()){
+		        ret = ret + str.charAt(i + word.length());
+		      }
+		    }
+		  }
+		  return ret;
+		}
 }
