@@ -337,5 +337,128 @@ public class Array2 {
 		    }
 		  }
 		  return nums;
-		}	
+		}
+	public int[] pre4(int[] nums) {
+		  int count = 0;
+		  int fourIndex = 0;
+		  for(int i = 0; i < nums.length; i++){
+		    if(nums[i] == 4){
+		      fourIndex = i;
+		      break;
+		    }
+		    count++;
+		  }
+		  int[] ret = new int[count];
+		  for(int i = 0; i < count; i++){
+		    ret[i] = nums[i];
+		  }
+		  return ret;
+		}
+	public int[] post4(int[] nums) {
+		  int fourInd = 0;
+		  for(int i = 0; i < nums.length; i++){
+		    if(nums[i] == 4){
+		      fourInd = i;
+		    }
+		  }
+		  int[] ret = new int[nums.length - fourInd - 1];
+		  int j = 0;
+		  for(int i = fourInd + 1; i < nums.length; i++){
+		    ret[j] = nums[i];
+		    j++;
+		  }
+		  return ret;
+		}
+	public int[] notAlone(int[] nums, int val) {
+		  for(int i = 1; i < nums.length - 1; i++){
+		    if(nums[i] == val && nums[i-1] != val && nums[i+1] != val){
+		      if(i > 0 && i < nums.length - 1){
+		        nums[i] = Math.max(nums[i-1],nums[i+1]);
+		      }
+		    }
+		  }
+		  return nums;
+		}
+	public int[] zeroFront(int[] nums) {
+		  int zeroCount = 0;
+		  for(int i = 0; i < nums.length; i++){
+		    if(nums[i] == 0){
+		      zeroCount++;
+		    }
+		  }
+		  int[] ret = new int[nums.length];
+		  for(int i = zeroCount; i < nums.length; i++){
+		    for(int k = 0; k < nums.length; k++){
+		      if(nums[k] != 0){
+		        ret[i] = nums[k];
+		        nums[k] = 0;
+		        break;
+		      }
+		    }
+		  }
+		  return ret;
+		}
+	public int[] withoutTen(int[] nums) {
+		  for(int i = 0; i < nums.length; i++){
+		    if(nums[i] == 10){
+		      for(int j = i; j < nums.length - 1; j++){
+		        nums[j] = nums[j+1];
+		      }
+		      nums[nums.length-1] = 0;
+		      i--;
+		    }
+		  }
+		  return nums;
+		}
+	public int[] zeroMax(int[] nums) {
+		  for(int i = 0; i < nums.length; i++){
+		    if(nums[i] == 0){
+		      int maxOdd = 0;
+		      for(int j = i + 1; j < nums.length; j++){
+		        if(nums[j]%2 == 1){
+		          maxOdd = Math.max(nums[j], maxOdd);
+		        }
+		      }
+		      nums[i] = maxOdd;
+		    }
+		  }
+		  return nums;
+		}
+	public int[] evenOdd(int[] nums) {
+		  int[] ret = new int[nums.length];
+		  int j = 0;
+		  for(int i = 0; i < nums.length; i++){
+		    if(nums[i]%2 == 0){
+		      ret[j] = nums[i];
+		      j++;
+		    }
+		  }
+		    for(int i = 0; i < nums.length; i++){
+		    if(nums[i]%2 == 1){
+		      ret[j] = nums[i];
+		      j++;
+		    }
+		  }
+		  return ret;
+		}
+	public String[] fizzBuzz(int start, int end) {
+		  String[] ret = new String[end - start];
+		  int j = 0;
+		  for(int i = start; i < end; i++){
+		    String retS = "";
+		    if(i%3 == 0){
+		      retS = "Fizz";
+		    }
+		    if(i%5 == 0){
+		      retS = retS + "Buzz";
+		    }
+		    if(retS.length() == 0){
+		      ret[j] = i + "";
+		    } else{
+		      ret[j] = retS;
+		    }
+		    j++;
+		  }
+		  return ret;
+		}
 }
