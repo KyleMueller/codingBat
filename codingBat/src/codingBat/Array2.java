@@ -340,10 +340,8 @@ public class Array2 {
 		}
 	public int[] pre4(int[] nums) {
 		  int count = 0;
-		  int fourIndex = 0;
 		  for(int i = 0; i < nums.length; i++){
 		    if(nums[i] == 4){
-		      fourIndex = i;
 		      break;
 		    }
 		    count++;
